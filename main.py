@@ -19,8 +19,8 @@ def spms_request(ids, emails):
 
     for i in ids:
         now = datetime.now()  # current date and time
-        spmsurl = config.SPMSURL + "/quick_regist.sync?this_page=" + config.PAGEID + "&pass_phrase=" + config.PASSPHRASE + "&id=" + ids  # spms server
-        # spmsurl = "http://localhost/jacow.php?user_id=" + str(i) + "&page_id=" + config.PAGEID + "&passphrase=" + config.PASSPHRASE + ""  # for localhost testing
+        # spmsurl = config.SPMSURL + "/quick_regist.sync?this_page=" + config.PAGEID + "&pass_phrase=" + config.PASSPHRASE + "&id=" + ids  # spms server
+        spmsurl = "http://localhost/jacow.php?user_id=" + str(i) + "&page_id=" + config.PAGEID + "&passphrase=" + config.PASSPHRASE + ""  # for localhost testing
         r = requests.get(spmsurl)
         date_time = now.strftime("%m/%d/%Y, %H:%M:%S")
         logdata = "================ spms_id: " + str(i) + ", spms_email: " + emails[email_index] + ", " + date_time + " ================\n"
@@ -36,6 +36,7 @@ def log_file(data):
     lines = [data]
     with open(config.LOGFILE, 'a') as f:
         f.write('\n'.join(lines))
+    f.close()
 
 
 if __name__ == '__main__':
