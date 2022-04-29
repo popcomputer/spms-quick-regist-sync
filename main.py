@@ -19,7 +19,7 @@ def spms_request(ids, emails):
 
     for i in ids:
         now = datetime.now()  # current date and time
-        # spmsurl = config.SPMSURL + "/quick_regist.sync?this_page=" + config.PAGEID + "&pass_phrase=" + config.PASSPHRASE + "&id=" + ids  # spms server
+        # spmsurl = config.SPMSURL + "/quick_regist.sync?this_page=" + config.PAGEID + "&pass_phrase=" + config.PASSPHRASE + "&id=" + str(ids[email_index])  # spms server
         spmsurl = "http://localhost/jacow.php?user_id=" + str(i) + "&page_id=" + config.PAGEID + "&passphrase=" + config.PASSPHRASE + ""  # for localhost testing
         r = requests.get(spmsurl)
         date_time = now.strftime("%m/%d/%Y, %H:%M:%S")
